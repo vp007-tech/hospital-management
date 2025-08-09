@@ -1,0 +1,962 @@
+{
+	"info": {
+		"_postman_id": "aab6ebcf-4c1b-4ed0-9cc5-43954639a95f",
+		"name": "Hospital-Management-Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36945441"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID</th>\r",
+									"        <th>Name</th>\r",
+									"        <th>Email</th>\r",
+									"        <th>Role</th>\r",
+									"        <th>Token</th>\r",
+									"    </tr>\r",
+									"    <tr>\r",
+									"        <td>{{response._id}}</td>\r",
+									"        <td>{{response.name}}</td>\r",
+									"        <td>{{response.email}}</td>\r",
+									"        <td>{{response.role}}</td>\r",
+									"        <td>{{response.token}}</td>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Bose\",\r\n  \"email\": \"knotcodz@gmail.com\",\r\n  \"password\": \"Bose@123\",\r\n  \"role\": \"patient\",\r\n  \"contact\": \"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/auth/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register As Doctor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID</th>\r",
+									"        <th>Name</th>\r",
+									"        <th>Email</th>\r",
+									"        <th>Role</th>\r",
+									"        <th>Token</th>\r",
+									"    </tr>\r",
+									"    <tr>\r",
+									"        <td>{{response._id}}</td>\r",
+									"        <td>{{response.name}}</td>\r",
+									"        <td>{{response.email}}</td>\r",
+									"        <td>{{response.role}}</td>\r",
+									"        <td>{{response.token}}</td>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Demo\",\r\n  \"email\": \"demo@gmail.com\",\r\n  \"password\": \"SecurePassword123!\",\r\n  \"role\": \"doctor\",\r\n  \"contact\": \"+1234567890\",\r\n  \"specialization\": \"Cardiology\",\r\n  \"qualifications\": [\"MD\", \"Board Certified Cardiologist\"],\r\n  \"experience\": \"8 years\",\r\n  \"fees\": 200,\r\n  \"schedule\": [\r\n    {\r\n      \"day\": \"Monday\",\r\n      \"startTime\": \"09:00\",\r\n      \"endTime\": \"17:00\"\r\n    },\r\n    {\r\n      \"day\": \"Wednesday\",\r\n      \"startTime\": \"09:00\",\r\n      \"endTime\": \"17:00\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/auth/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTYyZDQ1OTIwYjM5ZDJjOTViOGQ1NSIsImlhdCI6MTc1NDc2MTM0MCwiZXhwIjoxNzU3MzUzMzQwfQ.NsENMdzE8IIBhSUMnR5qDUbJyh_T9tqFQv76bAMPfG8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/protected",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"protected"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTYyODVjMTdjNjYxNWIwZDZkMDNkNSIsImlhdCI6MTc1NDY3MTE5NiwiZXhwIjoxNzU3MjYzMTk2fQ.2hgndAZrGL7D8RX_il4hX2pfGzcrE5hysGLQnkPJHWU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTYyODVjMTdjNjYxNWIwZDZkMDNkNSIsImlhdCI6MTc1NDY3MTE5NiwiZXhwIjoxNzU3MjYzMTk2fQ.2hgndAZrGL7D8RX_il4hX2pfGzcrE5hysGLQnkPJHWU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Admin User\",\r\n  \"email\": \"admin@hospital.com\",\r\n  \"password\": \"Admin@123\",\r\n  \"role\": \"admin\",\r\n  \"contact\": \"1234567890\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Get Single patient with their id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2MjEyMiwiZXhwIjoxNzU3MzU0MTIyfQ.VW4S2G9k5l1VREDAri8oyKU_ScMKP5hpi7Yr1wBkrHs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/patients/68962d45920b39d2c95b8d55",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"68962d45920b39d2c95b8d55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all patients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2MjEyMiwiZXhwIjoxNzU3MzU0MTIyfQ.VW4S2G9k5l1VREDAri8oyKU_ScMKP5hpi7Yr1wBkrHs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/patients/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patient",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2MjEyMiwiZXhwIjoxNzU3MzU0MTIyfQ.VW4S2G9k5l1VREDAri8oyKU_ScMKP5hpi7Yr1wBkrHs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Madhu\",\r\n    \"email\":\"madhu@gmail.com\",\r\n    \"password\":\"madu@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/patients/68962d45920b39d2c95b8d55",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"68962d45920b39d2c95b8d55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a User with ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2MjEyMiwiZXhwIjoxNzU3MzU0MTIyfQ.VW4S2G9k5l1VREDAri8oyKU_ScMKP5hpi7Yr1wBkrHs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/patients/68978e75c4918a739858f37a",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"68978e75c4918a739858f37a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Patient's Appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2MjEyMiwiZXhwIjoxNzU3MzU0MTIyfQ.VW4S2G9k5l1VREDAri8oyKU_ScMKP5hpi7Yr1wBkrHs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}} /api/patients/68962d45920b39d2c95b8d55/appointments",
+							"host": [
+								"{{baseURL}} "
+							],
+							"path": [
+								"api",
+								"patients",
+								"68962d45920b39d2c95b8d55",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Patient's Medical Records",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2MjEyMiwiZXhwIjoxNzU3MzU0MTIyfQ.VW4S2G9k5l1VREDAri8oyKU_ScMKP5hpi7Yr1wBkrHs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}} /api/patients/68962d45920b39d2c95b8d55/medical-records",
+							"host": [
+								"{{baseURL}} "
+							],
+							"path": [
+								"api",
+								"patients",
+								"68962d45920b39d2c95b8d55",
+								"medical-records"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doctors",
+			"item": [
+				{
+					"name": "get all doctors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2MjEyMiwiZXhwIjoxNzU3MzU0MTIyfQ.VW4S2G9k5l1VREDAri8oyKU_ScMKP5hpi7Yr1wBkrHs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/doctors",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"doctors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single doctor by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/doctors/689794960406207b88e9f6d3",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"689794960406207b88e9f6d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a doctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc5NDk2MDQwNjIwN2I4OGU5ZjZkMSIsImlhdCI6MTc1NDc2NDk1MywiZXhwIjoxNzU3MzU2OTUzfQ.UcYixBnIAdoAQKvK1yd_G7ou8Muj0osj7D-iDwFHJlM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Dr. Sarah Johnson DVD\",\r\n  \"email\": \"sarahello.johnson@hospital.com\",\r\n  \"password\": \"SecurePassword123!\",\r\n  \"role\": \"doctor\",\r\n  \"contact\": \"+1234567890\",\r\n  \"specialization\": \"Cardiology\",\r\n  \"qualifications\": [\"MD\", \"Board Certified Cardiologist\"],\r\n  \"experience\": \"8 years\",\r\n  \"fees\": 200,\r\n  \"schedule\": [\r\n    {\r\n      \"day\": \"Monday\",\r\n      \"startTime\": \"09:00\",\r\n      \"endTime\": \"17:00\"\r\n    },\r\n    {\r\n      \"day\": \"Wednesday\",\r\n      \"startTime\": \"09:00\",\r\n      \"endTime\": \"17:00\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/doctors/689794960406207b88e9f6d3",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"689794960406207b88e9f6d3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a doc by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Dr. Sarah Johnson DVD\",\r\n  \"email\": \"sarahello.johnson@hospital.com\",\r\n  \"password\": \"SecurePassword123!\",\r\n  \"role\": \"doctor\",\r\n  \"contact\": \"+1234567890\",\r\n  \"specialization\": \"Cardiology\",\r\n  \"qualifications\": [\"MD\", \"Board Certified Cardiologist\"],\r\n  \"experience\": \"8 years\",\r\n  \"fees\": 200,\r\n  \"schedule\": [\r\n    {\r\n      \"day\": \"Monday\",\r\n      \"startTime\": \"09:00\",\r\n      \"endTime\": \"17:00\"\r\n    },\r\n    {\r\n      \"day\": \"Wednesday\",\r\n      \"startTime\": \"09:00\",\r\n      \"endTime\": \"17:00\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/doctors/68979ff81c63a5c6d794e389",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"68979ff81c63a5c6d794e389"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get doctor's appointments using id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/doctors/689794960406207b88e9f6d3/appointments",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"689794960406207b88e9f6d3",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "get all appointments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/appointments",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get specific appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}} /api/appointments/6897ab0cda7ca4ad676b4b22",
+							"host": [
+								"{{baseURL}} "
+							],
+							"path": [
+								"api",
+								"appointments",
+								"6897ab0cda7ca4ad676b4b22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctorId\": \"689794960406207b88e9f6d3\",\r\n  \"date\": \"2023-12-15\",\r\n  \"time\": \"10:30\",\r\n  \"symptoms\": \"Fever, headache, and body aches\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/appointments",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}} /api/appointments/6897aa34da7ca4ad676b4b0d/cancel",
+							"host": [
+								"{{baseURL}} "
+							],
+							"path": [
+								"api",
+								"appointments",
+								"6897aa34da7ca4ad676b4b0d",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"completed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/appointments/6897ab0cda7ca4ad676b4b22/status",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"6897ab0cda7ca4ad676b4b22",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Billing",
+			"item": [
+				{
+					"name": "get all billings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/billing",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"billing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single bill by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/billing/6897aa34da7ca4ad676b4b0f",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"billing",
+								"6897aa34da7ca4ad676b4b0f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a patient bill using patient id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/billing/6897aa34da7ca4ad676b4b0f",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"billing",
+								"6897aa34da7ca4ad676b4b0f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pay a bill(under development)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/billing",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"billing"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medical Record",
+			"item": [
+				{
+					"name": "get  record by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/medical-records/6897adecbdd6e3a8a7c1e86f",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"medical-records",
+								"6897adecbdd6e3a8a7c1e86f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update medical record",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"diagnosis\":\"SleepoPhobia\", \"prescription\":\"Colpol\", \"notes\":\"HEHE\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/medical-records/6897adecbdd6e3a8a7c1e86f",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"medical-records",
+								"6897adecbdd6e3a8a7c1e86f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a medical record",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4YjczYzQ5MThhNzM5ODU4ZjM2OCIsImlhdCI6MTc1NDc2NzU3OCwiZXhwIjoxNzU3MzU5NTc4fQ.FnGqYf7LdCdp8pHkHeMqLBW6PfofLARxZ9eLB8Ld4jY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"patientId\": \"68978b73c4918a739858f368\",\r\n  \"appointmentId\": \"6897aa34da7ca4ad676b4b0d\",\r\n  \"diagnosis\": \"Type 2 Diabetes Mellitus\",\r\n  \"prescription\": [\r\n    {\r\n      \"medicine\": \"Metformin\",\r\n      \"dosage\": \"500mg\",\r\n      \"frequency\": \"Twice daily\",\r\n      \"duration\": \"30 days\"\r\n    },\r\n    {\r\n      \"medicine\": \"Glimiperide\",\r\n      \"dosage\": \"2mg\",\r\n      \"frequency\": \"Once daily\",\r\n      \"duration\": \"30 days\"\r\n    }\r\n  ],\r\n  \"notes\": \"Patient advised to monitor blood sugar levels regularly and follow up in 4 weeks.\",\r\n  \"testsRecommended\": [\"HbA1c\", \"Fasting Blood Sugar\"],\r\n  \"files\": [\r\n    {\r\n      \"name\": \"blood_test_report.pdf\",\r\n      \"url\": \"/uploads/medical-reports/patient_507f1f77bcf86cd799439011/blood_test.pdf\"\r\n    },\r\n    {\r\n      \"name\": \"ecg_report.pdf\",\r\n      \"url\": \"/uploads/medical-reports/patient_507f1f77bcf86cd799439011/ecg.pdf\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/medical-records/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"medical-records",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:5000",
+			"type": "default"
+		}
+	]
+}
