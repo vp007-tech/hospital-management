@@ -27,7 +27,7 @@ const registerUser = asyncHandler(async (req, res) => {
   } = req.body;
 
   // Validate input
-  if (!name || !email || !password || !contact) {
+  if (!name || !email || !password) {
     return res.status(400).json({ error: "Please add all required fields" });
   }
 
