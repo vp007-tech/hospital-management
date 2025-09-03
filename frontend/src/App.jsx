@@ -1,13 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 import Navbar from "./components/NavBar";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-// Auth Pages
+// Pages
+import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
-import PatientRegister from "./pages/auth/PatientRegister";
-import DoctorRegister from "./pages/auth/DoctorRegister";
-
-// Dashboard Pages
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Patients from "./pages/Patients";
 import Doctors from "./pages/Doctors";
@@ -15,49 +14,53 @@ import Appointments from "./pages/Appointments";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        {/* Auth Routes */}
-        <Route path="/" element={<Login />} />
-        <Route path="/register/patient" element={<PatientRegister />} />
-        <Route path="/register/doctor" element={<DoctorRegister />} />
+    <AuthProvider>
+      <Router>
+        <div className="min-h-screen bg-gray-50">
+          <Navbar />
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-        {/* Protected Routes */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/patients"
-          element={
-            <ProtectedRoute>
-              <Patients />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/doctors"
-          element={
-            <ProtectedRoute>
-              <Doctors />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/appointments"
-          element={
-            <ProtectedRoute>
-              <Appointments />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </Router>
+            {/* Protected Routes */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/patients"
+              element={
+                <ProtectedRoute>
+                  <Patients />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/doctors"
+              element={
+                <ProtectedRoute>
+                  <Doctors />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/appointments"
+              element={
+                <ProtectedRoute>
+                  <Appointments />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

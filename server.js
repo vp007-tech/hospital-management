@@ -20,10 +20,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database connection
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+if (process.env.MONGO_URI) {
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((err) => console.error("MongoDB connection error:", err));
+} else {
+  console.warn("MONGO_URI is not set. Skipping MongoDB connection; API will run without database.");
+}
 
 // Routes
 app.use("/api/auth", authRoutes);
@@ -32,6 +36,9 @@ app.use("/api/doctors", doctorRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/billing", billingRoutes);
 app.use("/api/medical-records", medicalRecordRoutes);
+app.get("/", (req, res) => {
+  res.status(200).send("Hospital Management API is running");
+});
 app.get("/protected",protect, (req, res) => {
   res.json({
     message: "This is a protected route",
