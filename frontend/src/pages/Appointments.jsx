@@ -24,7 +24,9 @@ function Appointments() {
   });
 
   useEffect(() => {
-    fetchInitialData();
+    if (user && user.id) {
+      fetchInitialData();
+    }
   }, [user]);
 
   const fetchInitialData = async () => {

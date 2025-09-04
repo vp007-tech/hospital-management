@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -7,7 +7,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -17,6 +17,17 @@ export default function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError(""); // Clear error when user types
   };
+
+  // Redirect if already authenticated (useEffect to avoid setState in render)
+  const [redirecting, setRedirecting] = useState(false);
+  useEffect(() => {
+    if (isAuthenticated()) {
+      setRedirecting(true);
+      navigate(from, { replace: true });
+    }
+  }, [isAuthenticated, navigate, from]);
+
+  if (redirecting) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
